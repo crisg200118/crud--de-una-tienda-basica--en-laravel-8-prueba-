@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\vendedor;
 use App\Models\tienda;
 use App\Models\ventas;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,17 +75,56 @@ route::put('productos/{id}',function(Request $datos, $id ){
 
 
 
+///////route de usuarios//////
 
-///////route de vendedores//////
-
-route::get('vendedores',function(){
- $vendedores =vendedor::all();
-  return view('vendedores.index',compact('vendedores'));
-})->name('vendedores.index');
-
+route::get('usuarios',function(){
+ $usuarios = User::all();
+  return view('usuarios.index',compact('usuarios'));
+})->name('usuarios.index');
 
 
-/////// fin route de vendedores//////
+
+route::get('usuarios/crear',function(){
+  return view('usuarios.crear');
+
+})->name('usuarios.crear');
+
+
+
+route::post('usuarios',function(Request $datos){
+  $usuarios = new User;
+  $usuarios->name = $datos->input('name');
+  $usuarios->email = $datos->input('email');
+  $usuarios->password = $datos->input('password');
+  $usuarios->save();
+  return Redirect()->route('usuarios.index')->with('info_g', 'Se ha guardado correctamente');
+})->name('usuarios.guardar');
+
+
+route::delete('usuarios/{id}',function($id){
+$usuarios = User::FindOrFail($id);
+$usuarios->delete();
+return  redirect()->route('usuarios.index')->with('info_e', 'Se ha eliminado correctamente');
+})->name('usuarios.eliminar');
+
+
+
+route::get('usuarios/editar/{id}',function($id){
+  $usuarios = User::FindOrFail($id);
+  return view('usuarios.editar',compact('usuarios'));
+})->name('usuarios.editar');
+
+
+route::put('usuarios/{id}',function(Request $datos,$id){
+  $usuarios = User::FindOrFail($id);
+  $usuarios->name = $datos->input('name');
+  $usuarios->email = $datos->input('email');
+  $usuarios->password = $datos->input('password');
+  $usuarios->save();
+  return redirect()->route('usuarios.index')->with('info_a', 'Se ha Actualizado correctamente');
+})->name('usuarios.actualizar');
+
+/////// fin route de usuarios//////
 
 
 
@@ -98,19 +137,19 @@ route::get('vendedores',function(){
 
 
 route::get('ventas',function(){
-  $ventas =ventas::all();
- $products = ventas::with('products')->get();
- $tiendas = ventas::with('tiendas')->get();
- $vendedor = ventas::with('vendedores')->get();
-  return view('ventas.index',compact('products','tiendas','vendedor','ventas'));
+ $ventas =ventas::all();
+ //$products = ventas::with('products')->get();
+// $tiendas = ventas::with('tiendas')->get();
+// $usuarios = ventas::with('User')->get();,compact('products','tiendas','ventas','usuarios')
+  return view('ventas.index',compact('ventas'));
 })->name('ventas.index');
 
 
 route::get('ventas/crear',function(){
   $productos=Product::all();
   $tiendas=tienda::all();
-  //$vendedor=vendedor::all();,'vendedor'
-  return view('ventas.crear',compact('productos','tiendas'));
+  $usuarios = User::all();
+  return view('ventas.crear',compact('productos','tiendas','usuarios'));
 })->name('ventas.crear');
 
 

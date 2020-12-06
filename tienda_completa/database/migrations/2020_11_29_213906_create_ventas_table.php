@@ -22,7 +22,7 @@ class CreateVentasTable extends Migration
           $table->foreignId('tienda_id')->constrained('tiendas');
           $table->timestamps();*/
 
-          $table->unsignedBigInteger('producto_id');      
+          $table->unsignedBigInteger('producto_id');
           $table->unsignedBigInteger('vendedor_id');
           $table->unsignedBigInteger('tienda_id');
 
@@ -33,7 +33,6 @@ class CreateVentasTable extends Migration
 
 
           $table->timestamps();
-
         });
     }
 

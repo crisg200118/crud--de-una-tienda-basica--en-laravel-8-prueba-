@@ -12,8 +12,8 @@
     <li ><a href=" {{ route('inicio') }} ">Inicio</a></li>
     <li ><a href="{{route('productos.index')}}">Productos</a></li>
     <li class="active"><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+    <li ><a href="{{ route('tiendas.index') }}">Tiendas</a></li>
+    <li><a href="{{ route('usuarios.index') }}">usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -54,6 +54,16 @@
                              @endforeach
                          </select>
                        </div>
+
+                       <!-- select usuarios -->
+                    <div class="form-group">
+                      <label for="usuarios">Usuarios</label>
+                       <select class="form-control">
+                           @foreach($usuarios as $usuarios)
+                           <option value="{{$usuarios->name}}">{{$usuarios->name}}</option>
+                           @endforeach
+                       </select>
+                     </div>
 
 
 

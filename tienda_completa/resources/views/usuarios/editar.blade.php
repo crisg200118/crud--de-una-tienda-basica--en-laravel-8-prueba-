@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Editar Tiendas')
+@section('titulo','Editar Usuarios')
 
 
 @section('contenido')
@@ -14,8 +14,8 @@
     <li  ><a href=" {{ route('inicio') }} ">Inicio</a></li>
     <li ><a href="{{route('productos.index')}}">Productos</a></li>
     <li ><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li class="active"><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li ><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+    <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
+    <li class="active" ><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -27,38 +27,35 @@
 
 			<div class="card">
 				<div class="card-header">
-					Editar tiendas
+				Actualizar Usuarios
 				</div>
 				<div class="card-body">
-					<form  action="{{ route('tiendas.actualizar', $tienda->id ) }}" method="post" accept-charset="utf-8">
+					<form  action="{{ route('usuarios.actualizar', $usuarios->id ) }}" method="post" accept-charset="utf-8">
                       @csrf
                       @method('put')
                      <div class="form-group">
                      	<label for="name">Nombre</label>
-					            <input type="text" name="name" class="form-control" value="{{ $tienda->name }}" >
+					            <input type="text" name="name" class="form-control" value="{{ $usuarios->name }}" >
 
                      </div>
 
                      <div class="form-group">
-                     	<label for="direccion">Direccion</label>
-					            <input type="text" name="direccion" class="form-control" value="{{ $tienda->direccion }}">
+                     	<label for="email">Correo</label>
+					            <input type="email" name="email" class="form-control" value="{{ $usuarios->email }}">
                      </div>
 
                      <div class="form-group">
-                     	<label for="telefono">Telefono</label>
-					            <input type="number" name="telefono" class="form-control" value="{{ $tienda->telefono }}">
+                     	<label for="password">Contraseña</label>
+					            <input type="text" name="password" class="form-control" value="{{ $usuarios->password }}">
                      </div>
 
-                     <div class="form-group">
-                     	<label for="dueño">Dueño</label>
-					            <input type="text" name="dueño" class="form-control" value="{{ $tienda->dueño }}">
-                     </div>
+
 
 
 
 					<button type="submit" class="btn btn-primary">Guardar</button>
 
-					<a href="{{ route('tiendas.index') }}" class="btn btn-danger">cancelar</a>
+					<a href="{{ route('usuarios.index') }}" class="btn btn-danger">cancelar</a>
 
 					</form>
 
