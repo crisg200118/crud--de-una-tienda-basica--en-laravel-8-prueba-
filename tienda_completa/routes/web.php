@@ -138,10 +138,10 @@ route::put('usuarios/{id}',function(Request $datos,$id){
 
 route::get('ventas',function(){
  $ventas =ventas::all();
- //$products = ventas::with('products')->get();
-// $tiendas = ventas::with('tiendas')->get();
-// $usuarios = ventas::with('User')->get();,compact('products','tiendas','ventas','usuarios')
-  return view('ventas.index',compact('ventas'));
+$products = ventas::with('products')->get();
+ $tiendas = ventas::with('tiendas')->get();
+  $usuarios = ventas::with('User')->get();
+  return view('ventas.index',compact('products','tiendas','ventas','usuarios'));
 })->name('ventas.index');
 
 
@@ -151,6 +151,15 @@ route::get('ventas/crear',function(){
   $usuarios = User::all();
   return view('ventas.crear',compact('productos','tiendas','usuarios'));
 })->name('ventas.crear');
+
+
+route::post('ventas',function(Request $datos){
+  $ventas =  new ventas;
+  $ventas->producto_id = $datos->get('producto');
+  $ventas->vendedor_id = $datos->get('usuario');
+  $ventas->tienda_id = $datos->get('tienda');
+  $ventas->save();
+})->name('ventas.guardar');
 
 
 

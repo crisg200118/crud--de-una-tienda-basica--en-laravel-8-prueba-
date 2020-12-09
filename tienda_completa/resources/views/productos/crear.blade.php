@@ -8,12 +8,12 @@
 
 <div class="container ">
   <h3>Productos</h3>
-  <ul class="nav nav-pills">
-    <li ><a href=" {{ route('inicio') }} ">Inicio</a></li>
-    <li class="active"><a href="{{route('productos.index')}}">Productos</a></li>
-    <li><a href="#">Ventas</a></li>
-    <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+  <ul class="nav">
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('inicio') }}">Inicio</a></li>
+    <li class=" nav-item "><a class="nav-link active" href="{{route('productos.index')}}">Productos</a></li>
+    <li  class="nav-item" ><a class="nav-link disabled" href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('tiendas.index') }}">Tienda</a></li>
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->

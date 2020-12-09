@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Crear Ventas')
+@section('titulo','Editar Ventas')
 
 @section('contenido')
 
@@ -25,23 +25,22 @@
 
 			<div class="card">
 				<div class="card-header">
-					Crear Ventas
+					Editar Ventas
 				</div>
 				<div class="card-body">
-					<form  action="{{ route('ventas.guardar') }}" method="post" accept-charset="utf-8">
+					<form  action="" method="post" accept-charset="utf-8">
                       @csrf
-                     <!--<div class="form-group">
+                  <!--   <div class="form-group">
                      	<label for="descripcion">Descripcion</label>
-					    <input type="text" name="descripcion" class="form-control">
+					    <input type="text" name="descripcion" class="form-control" >
 
-                     </div>
-                   -->
+            </div>-->
                      <!-- select productos -->
                      <div class="form-group">
                       <label for="producto">Productos</label>
                         <select class="form-control" name="producto">
                             @foreach($productos as $productos)
-                            <option  value="{{$productos->id}}">{{$productos->description}}</option>
+                            <option  value="{{$productos->description}}">{{$productos->description}}</option>
                             @endforeach
                         </select>
                       </div>
@@ -51,7 +50,7 @@
                         <label for="tienda">Tiendas</label>
                          <select class="form-control" name="tienda">
                              @foreach($tiendas as $tiendas)
-                             <option name="tienda" value="{{$tiendas->id}}">{{$tiendas->name}}</option>
+                             <option value="{{$tiendas->name}}">{{$tiendas->name}}</option>
                              @endforeach
                          </select>
                        </div>
@@ -61,7 +60,7 @@
                       <label for="usuarios">Usuarios</label>
                        <select class="form-control" name="usuario">
                            @foreach($usuarios as $usuarios)
-                           <option name="usuario" value="{{$usuarios->id}}">{{$usuarios->name}}</option>
+                           <option value="{{$usuarios->name}}">{{$usuarios->name}}</option>
                            @endforeach
                        </select>
                      </div>

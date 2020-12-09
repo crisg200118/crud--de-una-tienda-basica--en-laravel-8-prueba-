@@ -1,5 +1,10 @@
 @extends('layouts.plantilla')
 
+@section('css')
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('titulo','Listado De Productos')
 
 
@@ -10,12 +15,12 @@
 
 <div class="container ">
   <h3>Productos</h3>
-  <ul class="nav nav-pills">
-    <li ><a href="{{ route('inicio') }}">Inicio</a></li>
-    <li class="active"><a href="{{route('productos.index')}}">Productos</a></li>
-    <li><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+  <ul class="nav">
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('inicio') }}">Inicio</a></li>
+    <li class=" nav-item "><a class="nav-link active" href="{{route('productos.index')}}">Productos</a></li>
+    <li  class="nav-item" ><a class="nav-link disabled" href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('tiendas.index') }}">Tienda</a></li>
+    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -54,13 +59,13 @@
 					@endif
 
 
-					<table class="table table-bordered">
+					<table id="example" class="table table-striped table-bordered" style="width:100%" >
 						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Descripcion</th>
 								<th>Precio</th>
-						        <th>Acciones</th>
+						      <th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -98,6 +103,26 @@
 	</div>
 </div>
 
+@section('js')
+  <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+
+
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" >  </script>
+
+
+
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+<script >
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
+
+@endsection
 
 
 

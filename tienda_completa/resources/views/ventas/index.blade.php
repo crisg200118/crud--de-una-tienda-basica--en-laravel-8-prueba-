@@ -15,7 +15,7 @@
     <li ><a href="{{route('productos.index')}}">Productos</a></li>
     <li class="active" ><a href="{{ route('ventas.index') }}">Ventas</a></li>
     <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li ><a href="{{ route('vendedores.index') }}">Vendedores</a></li>
+    <li ><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -62,7 +62,7 @@
 								<th>Id</th>
 								<th>Producto Comprado</th>
 								<th>Tienda donde lo compro</th>
-						    <th>vendedor</th>
+						    <th>Usuarios</th>
                 <th>ubicacion</th>
                 <th>Acciones</th>
 							</tr>
@@ -73,7 +73,7 @@
 								<td>{{ $ventas->id }}</td>
 								<td>{{ $products->description }}</td>
 								<td>{{ $tiendas->name }}</td>
-              	<td>{{ $vendedor->name }}</td>
+              	<td>{{ $usuarios->name }}</td>
               	<td>{{ $tiendas->direccion }}</td>
 								<td>
 
