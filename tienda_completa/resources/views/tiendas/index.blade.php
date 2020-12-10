@@ -1,5 +1,10 @@
 @extends('layouts.plantilla')
 
+@section('css')
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('titulo','Listado De Tiendas')
 
 
@@ -7,15 +12,15 @@
 
 
 <!--Nav bar inicio-->
-
 <div class="container ">
-  <h3>Tienda</h3>
-  <ul class="nav nav-pills">
-    <li  ><a href=" {{ route('inicio') }} ">Inicio</a></li>
-    <li ><a href="{{route('productos.index')}}">Productos</a></li>
-    <li ><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li class="active"><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li ><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
+
+  <h3>Tiendas</h3>
+  <ul class=" nav nav-tabs">
+    <li class="nav-item" ><a class="nav-link " href="{{ route('inicio') }}">Inicio</a></li>
+    <li class=" nav-item "><a class="nav-link " href="{{route('productos.index')}}">Productos</a></li>
+    <li  class="nav-item" ><a class="nav-link  " href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link active" href="{{ route('tiendas.index') }}">Tiendas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -55,8 +60,8 @@
 					@endif
 
 
-					<table class="table table-bordered">
-						<thead>
+					<table id="tiendas" class="table table-bordered ">
+						<thead >
 							<tr>
 								<th>Id</th>
 								<th>Nombre de la tienda</th>
@@ -103,6 +108,27 @@
 		</div>
 	</div>
 </div>
+@section('js')
+  <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+
+
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" >  </script>
+
+
+
+  <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+  <script >
+  $(document).ready(function() {
+    $('#tiendas').DataTable();
+  } );
+  </script>
+
+
+
+@endsection
 
 
 

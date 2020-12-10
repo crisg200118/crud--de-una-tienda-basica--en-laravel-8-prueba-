@@ -7,13 +7,14 @@
 <!--Nav bar inicio-->
 
 <div class="container ">
+
   <h3>Ventas</h3>
-  <ul class="nav nav-pills">
-    <li ><a href=" {{ route('inicio') }} ">Inicio</a></li>
-    <li ><a href="{{route('productos.index')}}">Productos</a></li>
-    <li class="active"><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li ><a href="{{ route('tiendas.index') }}">Tiendas</a></li>
-    <li><a href="{{ route('usuarios.index') }}">usuarios</a></li>
+  <ul class=" nav nav-tabs">
+    <li class="nav-item" ><a class="nav-link " href="{{ route('inicio') }}">Inicio</a></li>
+    <li class=" nav-item "><a class="nav-link " href="{{route('productos.index')}}">Productos</a></li>
+    <li  class="nav-item" ><a class="nav-link active " href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('tiendas.index') }}">Tiendas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -65,9 +66,7 @@
                            @endforeach
                        </select>
                      </div>
-
-
-
+                     <br>
 
 
 

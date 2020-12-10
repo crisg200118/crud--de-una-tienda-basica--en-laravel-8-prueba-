@@ -9,13 +9,14 @@
 <!--Nav bar inicio-->
 
 <div class="container ">
-  <h3>Tienda</h3>
-  <ul class="nav nav-pills">
-    <li  ><a href=" {{ route('inicio') }} ">Inicio</a></li>
-    <li ><a href="{{route('productos.index')}}">Productos</a></li>
-    <li ><a href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li ><a href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li class="active" ><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
+
+  <h3>Usuarios</h3>
+  <ul class=" nav nav-tabs">
+    <li class="nav-item" ><a class="nav-link " href="{{ route('inicio') }}">Inicio</a></li>
+    <li class=" nav-item "><a class="nav-link " href="{{route('productos.index')}}">Productos</a></li>
+    <li  class="nav-item" ><a class="nav-link " href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('tiendas.index') }}">Tiendas</a></li>
+    <li class="nav-item" ><a class="nav-link active" href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -48,6 +49,7 @@
                      	<label for="password">Contraseña</label>
 					            <input type="text" name="password" class="form-control" value="{{ $usuarios->password }}">
                      </div>
+                     <br>
 
 
 

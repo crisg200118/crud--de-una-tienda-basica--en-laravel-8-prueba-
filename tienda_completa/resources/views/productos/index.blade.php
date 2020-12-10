@@ -15,12 +15,12 @@
 
 <div class="container ">
   <h3>Productos</h3>
-  <ul class="nav">
-    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('inicio') }}">Inicio</a></li>
+  <ul class=" nav nav-tabs">
+    <li class="nav-item" ><a class="nav-link " href="{{ route('inicio') }}">Inicio</a></li>
     <li class=" nav-item "><a class="nav-link active" href="{{route('productos.index')}}">Productos</a></li>
-    <li  class="nav-item" ><a class="nav-link disabled" href="{{ route('ventas.index') }}">Ventas</a></li>
-    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('tiendas.index') }}">Tienda</a></li>
-    <li class="nav-item" ><a class="nav-link disabled" href="{{ route('usuarios.index') }}">Usuarios</a></li>
+    <li  class="nav-item" ><a class="nav-link " href="{{ route('ventas.index') }}">Ventas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('tiendas.index') }}">Tiendas</a></li>
+    <li class="nav-item" ><a class="nav-link " href="{{ route('usuarios.index') }}">Usuarios</a></li>
   </ul>
 </div>
 <!--Nav bar final-->
@@ -59,7 +59,7 @@
 					@endif
 
 
-					<table id="example" class="table table-striped table-bordered" style="width:100%" >
+					<table id="productos" class="table table-striped table-bordered" style="width:100%" >
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -117,7 +117,7 @@
 
 <script >
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#productos').DataTable();
 } );
 </script>
 
