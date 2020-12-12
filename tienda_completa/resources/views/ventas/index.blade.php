@@ -60,33 +60,36 @@
 					@endif
 
 
-					<table id="ventas" class="table table-striped">
+					<table id="ventas" class="table table-bordered">
 						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Producto Comprado</th>
 								<th>Tienda donde lo compro</th>
-						    <th>Usuarios</th>
-                <th>ubicacion</th>
+						    <th>Vendedor</th>
+                <th>precio del producto</th>
+              <th>ubicacion</th>
                 <th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($ventas as $ventas)
+							@foreach($data as $data)
 							<tr>
-								<td>{{ $ventas->id }}</td>
-								<td>{{ $products->description }}</td>
-								<td>{{ $tiendas->name }}</td>
-              	<td>{{ $usuarios->name }}</td>
-              	<td>{{ $tiendas->direccion }}</td>
+								<td>{{ $data->id }}</td>
+								<td>{{ $data->description }}</td>
+								<td>{{ $data->tienda }}</td>
+              	<td>{{ $data->name }}</td>
+                <td>{{ $data->price }}</td>
+                <td>{{ $data->direccion }}</td>
+
 								<td>
 
-									<a href="" class="btn btn-warning">Editar</a>
+									<a href="{{ route('ventas.editar',$data->id,$data->description) }}" class="btn btn-warning">Editar</a>
 
 
-									<a href="javascript: document.getElementById('eliminar_{{ $tienda->id }}').submit()" class="btn btn-danger">Eliminar</a>
+									<a href="javascript: document.getElementById('eliminar_{{ $data->id }}').submit()" class="btn btn-danger">Eliminar</a>
 
-									<form id="eliminar_{{ $ventas->id }}" action="" method="post">
+									<form id="eliminar_{{ $data->id }}" action="" method="post">
 									    @method('delete')
 										@csrf
 

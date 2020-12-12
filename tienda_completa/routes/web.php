@@ -138,10 +138,16 @@ route::put('usuarios/{id}',function(Request $datos,$id){
 
 route::get('ventas',function(){
  $ventas =ventas::all();
-$products = ventas::with('products')->get();
- $tiendas = ventas::with('tiendas')->get();
-  $usuarios = ventas::with('User')->get();
-  return view('ventas.index',compact('products','tiendas','ventas','usuarios'));
+//$products = ventas::with('products')->get();'products','tiendas','usuarios',
+ //$tiendas = ventas::with('tiendas')->get();
+  //$usuarios = ventas::with('User')->get();
+  $data = DB::table('ventas')
+            ->join('products','products.id','=','ventas.producto_id')
+            ->join('users','users.id','=','ventas.vendedor_id')
+            ->join('tiendas','tiendas.id','=','ventas.tienda_id')
+            ->select('ventas.*','products.description','products.price','tiendas.name as tienda','tiendas.direccion','users.name')
+            ->get();
+  return view('ventas.index',compact('ventas','data'));
 })->name('ventas.index');
 
 
@@ -159,7 +165,33 @@ route::post('ventas',function(Request $datos){
   $ventas->vendedor_id = $datos->get('usuario');
   $ventas->tienda_id = $datos->get('tienda');
   $ventas->save();
+  return redirect()->route('ventas.index')->with('info_g', 'Se ha hecho la venta correctamente');
 })->name('ventas.guardar');
+
+route::get('ventas/editar/{id}',function($id){
+  $productos = DB::table('ventas')
+            ->join('products','products.id','=','ventas.producto_id')
+            ->join('users','users.id','=','ventas.vendedor_id')
+            ->join('tiendas','tiendas.id','=','ventas.tienda_id')
+            ->select('ventas.*','products.description','products.price','tiendas.name as tienda','tiendas.direccion','users.name')
+            ->where('products.id','=', $id)
+            ->get();
+  $tiendas = DB::table('ventas')
+            ->join('products','products.id','=','ventas.producto_id')
+            ->join('users','users.id','=','ventas.vendedor_id')
+            ->join('tiendas','tiendas.id','=','ventas.tienda_id')
+            ->select('ventas.*','products.description','products.price','tiendas.name as tienda','tiendas.direccion','users.name')
+            ->get();
+$usuarios = DB::table('ventas')
+            ->join('products','products.id','=','ventas.producto_id')
+            ->join('users','users.id','=','ventas.vendedor_id')
+            ->join('tiendas','tiendas.id','=','ventas.tienda_id')
+            ->select('ventas.*','products.description','products.price','tiendas.name as tienda','tiendas.direccion','users.name')
+            ->get();
+
+  $ventas = ventas::FindOrFail($id);
+  return view('ventas.editar',compact('ventas','productos','tiendas','usuarios'));
+})->name('ventas.editar');
 
 
 

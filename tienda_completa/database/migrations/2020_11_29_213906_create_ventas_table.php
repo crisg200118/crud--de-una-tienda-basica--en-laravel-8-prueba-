@@ -28,7 +28,7 @@ class CreateVentasTable extends Migration
 
 
           $table->foreign('producto_id')->references('id')->on('products');
-          $table->foreign('vendedor_id')->references('id')->on('vendedores');
+          $table->foreign('vendedor_id')->references('id')->on('users');
           $table->foreign('tienda_id')->references('id')->on('tiendas');
 
 
